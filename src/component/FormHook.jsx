@@ -3,8 +3,9 @@ import { useState } from "react";
 import jsPDF from "jspdf";
 
 export default function FormHook() {
-  const [name, setName] = useState("kader");
-  const [lastName, setLastName] = useState("dashing");
+  const [name, setName] = useState();
+  const [lastName, setLastName] = useState();
+  const [dernier, setDernier] = useState();
 
   const generatePDF = () => {
     const inputForm = document.getElementById("form");
@@ -30,7 +31,7 @@ export default function FormHook() {
   return (
     <form id="form">
       <FormControl>
-        <FormLabel htmlFor="name">amir name</FormLabel>
+        <FormLabel htmlFor="name">first name</FormLabel>
         <Input
           id="name"
           placeholder="name"
@@ -48,11 +49,12 @@ export default function FormHook() {
         />
       </FormControl>
       <FormControl>
-        <FormLabel htmlFor="xxx">fethi</FormLabel>
+        <FormLabel htmlFor="xxx">dernier</FormLabel>
         <Input
           id="xxx"
           placeholder="lastname"
-     
+          value={dernier}
+        onChange={(e)=> setDernier(e.target.value)}
         />
       </FormControl>
       <Button mt={4} colorScheme="teal" type="button" onClick={generatePDF}>
